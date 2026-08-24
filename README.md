@@ -1,10 +1,10 @@
 # Sisterhood of the Traveling Packets — CTF Writeup
 
-**Author:** Mandy Chung
-**Event:** WiCyS x Flare x SANS — Sisterhood of the Traveling Packets
-**Category:** Web / OSINT / Dark Web Recon
-**Date Solved:** 17 August 2026
-**Difficulty:** Beginner
+**Author:** Mandy Chung <br>
+**Event:** WiCyS x Flare x SANS — Sisterhood of the Traveling Packets <br>
+**Category:** Web / OSINT / Dark Web Recon <br>
+**Date Solved:** 17 August 2026 <br>
+**Difficulty:** Beginner <br>
 
 ## Summary
 
