@@ -54,7 +54,7 @@ http://<onion-address>/api.php?action=messages&conversation_id=4
 http://<onion-address>/api.php?action=messages&conversation_id=5
 ```
 
-`conversation_id=2` returned a conversation thread containing an encrypted password tied to the user `mora`. This indicated the `messages` action was leaking internal operator communications — including credential material — via an unauthenticated API call, a clear example of an Insecure Direct Object Reference (IDOR) style flaw.
+`conversation_id=2` returned a conversation thread containing an encrypted password tied to the user `mora`. This indicated the `messages` action was leaking internal operator communications, including credential material, via an unauthenticated API call, a clear example of an Insecure Direct Object Reference (IDOR) style flaw.
 
 ![Encrypted password found via API](images/encrypted-password.png)
 
@@ -81,12 +81,12 @@ Password: Pantal0n3s_Rul3z!%
 
 ## Lessons Learned
 
-- Hidden dotfiles (`.exfil.sh`) are a reminder to always run `ls -la` rather than trusting default file listings, since operational scripts are often left behind carelessly.
-- `robots.txt` remains a reliable first step for surfacing unlinked admin/API endpoints even in dark-web-style challenges.
-- The `messages` API action lacked access control on `conversation_id`, a textbook IDOR — sequential/guessable IDs on sensitive endpoints should always require authentication and authorization checks.
-- Base64 is encoding, not encryption — this challenge reinforced why storing "encrypted" credentials as base64 is a critical OPSEC failure, mirroring real-world ransomware group mistakes that researchers exploit for attribution.
-- Systematic, sequential API parameter testing (rather than random guessing) was key to surfacing the leaked credential efficiently.
+- Hidden dotfiles (`.exfil.sh`) are a reminder to always run `ls -la` rather than trusting default file listings.
+- `robots.txt` remains a reliable first step for surfacing unlinked admin/API endpoints.
+- The `messages` API action lacked access control on `conversation_id`, a textbook IDOR, sequential/guessable IDs on sensitive endpoints should always require authentication and authorization checks.
+- Base64 is encoding, not encryption. This challenge reinforced why storing "encrypted" credentials as base64 is a critical OPSEC failure.
+- Systematic, sequential API parameter testing was key to surfacing the leaked credential.
 
 ## Tools Used
 
-Tor Browser, `ls -la`, `base64 -d`, browser DevTools (for API testing).
+Tor Browser, browser DevTools, `ls -la`, `base64 -d`.
